@@ -26,14 +26,23 @@ def mage_stats(mages: list[dict]) -> dict:
 
 
 def main() -> None:
-    print()
-    print("Testing artifact sorter...")
     artifacts = [
         {"name": "Shadow Blade", "power": 93, "type": "accessory"},
         {"name": "Fire Staff", "power": 65, "type": "armor"},
         {"name": "Light Prism", "power": 111, "type": "focus"},
         {"name": "Water Chalice", "power": 67, "type": "armor"},
     ]
+    mages = [
+        {"name": "Phoenix", "power": 50, "element": "earth"},
+        {"name": "Luna", "power": 58, "element": "light"},
+        {"name": "Storm", "power": 91, "element": "ice"},
+        {"name": "Morgan", "power": 64, "element": "shadow"},
+        {"name": "Nova", "power": 80, "element": "light"},
+    ]
+    spells = ["earthquake", "tsunami", "fireball", "lightning"]
+
+    print()
+    print("Testing artifact sorter...")
     artifacts_sorted = artifact_sorter(artifacts)
     first = artifacts_sorted.pop(0)
     second = artifacts_sorted.pop(0)
@@ -47,16 +56,7 @@ def main() -> None:
 
     print()
     print("Testing spell transformer...")
-    spells = ["earthquake", "tsunami", "fireball", "lightning"]
     print(*spell_transformer(spells))
-
-    mages = [
-        {"name": "Phoenix", "power": 50, "element": "earth"},
-        {"name": "Luna", "power": 58, "element": "light"},
-        {"name": "Storm", "power": 91, "element": "ice"},
-        {"name": "Morgan", "power": 64, "element": "shadow"},
-        {"name": "Nova", "power": 80, "element": "light"},
-    ]
 
     print()
     print("Testing mage_stats...")
