@@ -28,35 +28,34 @@ def mage_stats(mages: list[dict]) -> dict:
 def main() -> None:
     print()
     print("Testing artifact sorter...")
-    sorted = artifact_sorter(
-        [
-            {"name": "Orb", "power": 85, "type": "Crystal"},
-            {"name": "Dart", "power": 42, "type": "Poison"},
-            {"name": "Scroll", "power": 66, "type": "Dark"},
-            {"name": "Staff", "power": 92, "type": "Fire"},
-        ]
-    )
-    first = sorted.pop(0)
-    second = sorted.pop(0)
+    artifacts = [
+        {"name": "Shadow Blade", "power": 93, "type": "accessory"},
+        {"name": "Fire Staff", "power": 65, "type": "armor"},
+        {"name": "Light Prism", "power": 111, "type": "focus"},
+        {"name": "Water Chalice", "power": 67, "type": "armor"},
+    ]
+    artifacts_sorted = artifact_sorter(artifacts)
+    first = artifacts_sorted.pop(0)
+    second = artifacts_sorted.pop(0)
     print(
-        first.get("type"),
         first.get("name"),
         f"({first.get("power")} power)",
         "comes before",
-        second.get("type"),
         second.get("name"),
         f"({second.get("power")} power)",
     )
 
     print()
     print("Testing spell transformer...")
-    print(*spell_transformer(["fireball", "heal", "shield"]))
+    spells = ["earthquake", "tsunami", "fireball", "lightning"]
+    print(*spell_transformer(spells))
 
     mages = [
-        {"name": "Gandalf", "power": 94, "element": "Light"},
-        {"name": "Dumbledore", "power": 85, "element": "Arcane"},
-        {"name": "Doctor Strange", "power": 100, "element": "Time"},
-        {"name": "Merlin", "power": 89, "element": "Illusion"},
+        {"name": "Phoenix", "power": 50, "element": "earth"},
+        {"name": "Luna", "power": 58, "element": "light"},
+        {"name": "Storm", "power": 91, "element": "ice"},
+        {"name": "Morgan", "power": 64, "element": "shadow"},
+        {"name": "Nova", "power": 80, "element": "light"},
     ]
 
     print()
@@ -66,12 +65,12 @@ def main() -> None:
 
     print()
     print("Testing power_filter...")
-    filtered = power_filter(mages, avg_power)
+    mages_filtered = power_filter(mages, avg_power)
     print(
-        f"Only {len(filtered)} above average:",
+        f"Only {len(mages_filtered)} above average:",
         *[
             f"- {mage.get("name")} with {mage.get("element")} magic"
-            for mage in filtered
+            for mage in mages_filtered
         ],
         sep="\n",
     )
