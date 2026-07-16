@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 def artifact_sorter(artifacts: list[dict]) -> list[dict]:
-    return sorted(artifacts, reverse=True, key=lambda arti: arti.get("power"))
+    return sorted(artifacts, reverse=True, key=lambda arti: arti["power"])
 
 
 def power_filter(mages: list[dict], min_power: int) -> list[dict]:
-    return list(filter(lambda mage: mage.get("power") >= min_power, mages))
+    return list(filter(lambda mage: mage["power"] >= min_power, mages))
 
 
 def spell_transformer(spells: list[str]) -> list[str]:
@@ -13,14 +13,10 @@ def spell_transformer(spells: list[str]) -> list[str]:
 
 def mage_stats(mages: list[dict]) -> dict:
     return {
-        "max_power": max(mages, key=lambda mage: mage.get("power")).get(
-            "power"
-        ),
-        "min_power": min(mages, key=lambda mage: mage.get("power")).get(
-            "power"
-        ),
+        "max_power": max(mages, key=lambda mage: mage["power"])["power"],
+        "min_power": min(mages, key=lambda mage: mage["power"])["power"],
         "avg_power": round(
-            sum(mage.get("power") for mage in mages) / len(mages), 2
+            sum(mage["power"] for mage in mages) / len(mages), 2
         ),
     }
 
@@ -47,11 +43,9 @@ def main() -> None:
     first = artifacts_sorted.pop(0)
     second = artifacts_sorted.pop(0)
     print(
-        first.get("name"),
-        f"({first.get("power")} power)",
+        f"{first["name"]} ({first["power"]} power)",
         "comes before",
-        second.get("name"),
-        f"({second.get("power")} power)",
+        f"{second["name"]} ({second["power"]} power)",
     )
 
     print()
@@ -69,7 +63,7 @@ def main() -> None:
     print(
         f"Only {len(mages_filtered)} above average:",
         *[
-            f"- {mage.get("name")} with {mage.get("element")} magic"
+            f"- {mage["name"]} with {mage["element"]} magic"
             for mage in mages_filtered
         ],
         sep="\n",
