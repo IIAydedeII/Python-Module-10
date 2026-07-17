@@ -68,7 +68,9 @@ class MageGuild:
 
     @power_validator(10)
     def cast_spell(self, spell_name: str, power: int) -> str:
-        return f"Successfully cast {spell_name} with {power} power"
+        return (
+            f"Successfully cast {spell_name.capitalize()} with {power} power"
+        )
 
 
 def main() -> None:
