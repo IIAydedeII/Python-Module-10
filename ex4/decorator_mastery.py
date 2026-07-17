@@ -82,12 +82,11 @@ def main() -> None:
     print()
     print("Testing spell timer...")
 
-    @spell_timer
     def fireball() -> str:
         sleep(0.1)
         return "Fireball cast!"
 
-    print("Result:", fireball())
+    print("Result:", spell_timer(fireball)())
 
     print()
     print("Testing retry spell...")
