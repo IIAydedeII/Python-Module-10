@@ -47,10 +47,9 @@ def main() -> None:
 
     print()
     print("Testing conditional caster...")
-    condition = lambda _, power: power > 15
-    conditioned = conditional_caster(condition, poison)
+    conditioned = conditional_caster(lambda _, power: power > 15, poison)
     print(f"{conditioned("Knight", 17)}")
-    conditioned = conditional_caster(condition, poison)
+    conditioned = conditional_caster(lambda _, power: power > 15, poison)
     print(f"{conditioned("Knight", 13)}")
 
     print()
