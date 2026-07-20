@@ -3,6 +3,7 @@ from collections.abc import Callable
 from functools import wraps
 from time import time, sleep, time_ns
 from itertools import product
+from typing import Any
 
 
 def spell_timer(func: Callable) -> Callable:
@@ -23,7 +24,9 @@ def spell_timer(func: Callable) -> Callable:
 def power_validator(min_power: int) -> Callable:
     def decorator(func: Callable) -> Callable:
         @wraps(func)
-        def validator(self, spell_name: str, power: int) -> Callable | str:
+        def validator(
+            self: Any, spell_name: str, power: int
+        ) -> Callable | str:
             if power < min_power:
                 return "Insufficient power for this spell"
             return func(self, spell_name, power)
